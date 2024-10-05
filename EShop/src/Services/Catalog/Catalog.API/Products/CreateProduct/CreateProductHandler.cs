@@ -3,11 +3,14 @@
     public record CreateProductCommand(string Name, List<string> Categories, string Description, string ImageFile, decimal Price)
         : ICommand<CreateProductResult>;
     public record CreateProductResult(Guid Id);
-    internal class CreateProductCommandHandler(IDocumentSession documentSession)
+    internal class CreateProductCommandHandler
+        (IDocumentSession documentSession, ILogger<CreateProductCommandHandler> logger)
         : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
         public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
         {
+            logger.LogInformation("CreateProductCommandHandler.Handle called with {@Command}", command);
+
             // Create domain entity from command object
             Product product = new()
             {
