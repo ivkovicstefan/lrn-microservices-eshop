@@ -15,7 +15,7 @@ namespace Catalog.API.Products.GetProductsByCategory
 
             var products = await documentSession.Query<Product>()
                 .Where(p => p.Categories.Contains(query.Category))
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
 
             return new GetProductsByCategoryResult(products);
         }
