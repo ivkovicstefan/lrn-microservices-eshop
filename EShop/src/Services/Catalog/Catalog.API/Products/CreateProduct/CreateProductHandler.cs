@@ -21,13 +21,11 @@
     }
 
     internal class CreateProductCommandHandler
-        (IDocumentSession documentSession, ILogger<CreateProductCommandHandler> logger)
+        (IDocumentSession documentSession)
         : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
         public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
         {
-            logger.LogInformation("CreateProductCommandHandler.Handle called with {@Command}", command);
-
             // Create domain entity from command object
             Product product = new()
             {
