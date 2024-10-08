@@ -14,5 +14,12 @@
 
             return basket;
         }
+
+        public async Task<ShoppingCart> StoreBasket(ShoppingCart basket, CancellationToken cancellationToken = default)
+        {
+            documentSession.Store(basket);
+            await documentSession.SaveChangesAsync(cancellationToken);
+            return basket;
+        }
     }
 }
