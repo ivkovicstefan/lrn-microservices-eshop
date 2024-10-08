@@ -21,5 +21,11 @@
             await documentSession.SaveChangesAsync(cancellationToken);
             return basket;
         }
+        public async Task<bool> DeleteBasket(string userName, CancellationToken cancellationToken = default)
+        {
+            documentSession.Delete<ShoppingCart>(userName);
+            await documentSession.SaveChangesAsync(cancellationToken);
+            return true;
+        }
     }
 }
