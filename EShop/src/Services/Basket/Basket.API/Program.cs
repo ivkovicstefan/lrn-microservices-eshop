@@ -8,6 +8,11 @@ builder.Services.AddMediatR(config =>
     config.AddOpenBehavior(typeof(ValidationBehavior<,>));
     config.AddOpenBehavior(typeof(LoggingBehavior<,>));
 });
+builder.Services.AddMarten(options =>
+{
+    options.Connection(builder.Configuration.GetConnectionString("BasketDb")!);
+    options.Schema.For<ShoppingCart>().Identity(sc => sc.UserName);
+}).UseLightweightSessions();
 
 var app = builder.Build();
 
