@@ -13,6 +13,7 @@ builder.Services.AddMarten(options =>
     options.Connection(builder.Configuration.GetConnectionString("BasketDb")!);
     options.Schema.For<ShoppingCart>().Identity(sc => sc.UserName);
 }).UseLightweightSessions();
+builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 
 var app = builder.Build();
 
