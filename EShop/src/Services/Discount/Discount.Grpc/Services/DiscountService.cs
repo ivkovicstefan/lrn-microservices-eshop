@@ -20,6 +20,9 @@ namespace Discount.Grpc.Services
                 coupon = new() { ProductName = "No Discount", Amount = 0, Description = "No Discount" };
             }
 
+            logger.LogInformation("Discount is retreived for ProductName: {productName}, Amount: {amount}",
+                coupon.ProductName, coupon.Amount);
+
             var response = coupon.Adapt<CouponModel>();
 
             return response;
@@ -37,6 +40,9 @@ namespace Discount.Grpc.Services
             discountDbContext.Add(coupon);
             await discountDbContext.SaveChangesAsync(context.CancellationToken);
 
+            logger.LogInformation("Discount is successfully created. ProductName: {productName}",
+                coupon.ProductName);
+
             var response = coupon.Adapt<CouponModel>();
 
             return response;
@@ -53,6 +59,9 @@ namespace Discount.Grpc.Services
 
             discountDbContext.Update(coupon);
             await discountDbContext.SaveChangesAsync(context.CancellationToken);
+
+            logger.LogInformation("Discount is successfully updated. ProductName: {productName}",
+                coupon.ProductName);
 
             var response = coupon.Adapt<CouponModel>();
 
@@ -72,6 +81,9 @@ namespace Discount.Grpc.Services
 
             discountDbContext.Coupons.Remove(coupon);
             await discountDbContext.SaveChangesAsync(context.CancellationToken);
+
+            logger.LogInformation("Discount is successfully deleted. ProductName: {productName}",
+                coupon.ProductName);
 
             return new DeleteDiscountResponse { IsSuccessful = true };
         }
