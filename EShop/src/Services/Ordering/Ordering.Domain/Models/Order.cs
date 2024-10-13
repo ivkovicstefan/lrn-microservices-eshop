@@ -30,7 +30,7 @@
                 Payment = payment
             };
 
-            //order.AddDomainEvent(new OrderCreatedEveent(order));
+            order.AddDomainEvent(new OrderCreatedEvent(order));
 
             return order;
         }
@@ -44,7 +44,7 @@
             Payment = payment;
             Status = status;
 
-            // AddDomainEvent(new OrderUpdatedEvent(this));
+            AddDomainEvent(new OrderUpdatedEvent(this));
         }
 
         public void Add(ProductId productId, int quantity, decimal price)
