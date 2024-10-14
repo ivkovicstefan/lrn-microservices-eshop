@@ -101,9 +101,6 @@ namespace Ordering.Infrastructure.Data.Configurations
                 nameBuilder.Property(n => n.Expiration)
                     .HasMaxLength(10);
 
-                nameBuilder.Property(n => n.Expiration)
-                    .HasMaxLength(3);
-
                 nameBuilder.Property(n => n.PaymentMethod);
             });
 
