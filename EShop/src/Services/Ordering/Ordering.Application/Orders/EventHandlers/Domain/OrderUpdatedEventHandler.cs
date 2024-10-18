@@ -12,7 +12,7 @@ namespace Ordering.Application.Orders.EventHandlers.Domain
         {
             logger.LogInformation("Domain event handled: {DomainEvent}",
                 notification.GetType().Name);
-            throw new NotImplementedException();
+            return Task.CompletedTask;
         }
     }
 }
