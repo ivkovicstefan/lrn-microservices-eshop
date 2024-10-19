@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Configure Services
 builder.Services
     .AddApiServices(builder.Configuration)
-    .AddApplicationServices()
+    .AddApplicationServices(builder.Configuration)
     .AddInfrastructureServices(builder.Configuration);
 
 var app = builder.Build();
