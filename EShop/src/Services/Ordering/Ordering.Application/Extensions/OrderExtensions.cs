@@ -5,9 +5,19 @@ namespace Ordering.Application.Extensions
 {
     public static class OrderExtensions
     {
+        public static OrderDto ToOrderDto(this Order order)
+        {
+            return MapToOrderDto(order);
+        }
+
         public static IEnumerable<OrderDto> ToOrderDtoList(this IEnumerable<Order> orders)
         {
-            return orders.Select(order => new OrderDto(
+            return orders.Select(MapToOrderDto);
+        }
+
+        private static OrderDto MapToOrderDto(Order order)
+        {
+            return new OrderDto(
                 Id: order.Id.Value,
                 CustomerId: order.CustomerId.Value,
                 OrderName: order.OrderName.Value,
@@ -38,7 +48,7 @@ namespace Ordering.Application.Extensions
                             oi.OrderId.Value,
                             oi.ProductId.Value,
                             oi.Quantity,
-                            oi.Price)).ToList()));
+                            oi.Price)).ToList());
         }
     }
 }
