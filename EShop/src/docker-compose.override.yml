@@ -118,7 +118,7 @@ services:
       - orderingdb
       - messagebroker
     ports:
-      - "6003:8000"
+      - "6003:8080"
       - "6063:8081"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
