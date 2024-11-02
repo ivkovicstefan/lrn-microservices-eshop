@@ -78,3 +78,21 @@ Ordering API uses a Clean Architecture together with CQRS, and a Domain-driven D
   </picture>
 </p>
 <p align="center">Picture 5 - Ordering,API architecture diagram</p>
+
+## Concepts Learned
+1. Microservices Architecture
+2. Vertical Slice Architecture
+3. Clean Architecture
+4. gRPC Services
+5. CQRS Pattern
+6. Mediator Pattern
+7. Proxy Pattern
+8. Decorator Pattern
+9. Cache-aside Pattern
+10. Pub/Sub Pattern
+11. REPR Pattern
+12. API Gateway Pattern
+13. Gateway Routing Pattern
+14. BFF Pattern
+15. Domain-driven Design
+16. RabbitMQ
